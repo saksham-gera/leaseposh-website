@@ -4,18 +4,14 @@
     justify-content: left;
     align-items: start;
     border-radius: 10px;
-    border: 0.1vw solid transparent;
     width: 23vw;
     height: 65vh;
     cursor: pointer;
     margin-bottom: 1rem;
 }
 
-.product-card:hover {
-    border-color: black;
-}
-
 .product-card img{
+    transition: linear 0.4s;
     width: 22.9vw;
     height: 50vh;
     object-fit: cover;
