@@ -1,0 +1,12 @@
+.header-text {
+    background-color: transparent;
+    color: white;
+    opacity: 100%;
+    margin: 3rem;
+}
+
+.header-text p {
+    margin: 2rem 0;
+    font-size: 40px;
+    width: 70vh;
+}

@@ -1,0 +1,49 @@
+.sub-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 95vw;
+    height: 30vh;
+    margin: 2.5vh 2.5vw 0 2.5vw;
+    background-color: rgb(218, 218, 218);
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    height: 20vh;
+    margin: 0 2.5vw;
+    background-color: black;
+}
+
+.copyright-tag {
+    font-size: 0.8rem;
+    opacity: 75%;
+    color: white;
+}
+
+.customer-policies {
+    display: flex;
+}
+
+.social-handles {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.newsletter-input {
+    margin: 50px;
+    display: flex;
+}
+
+.newsletter-input input {
+    width: 30vw;
+}
+
+.sub-footer div input {
+    margin-right: 20px;
+}

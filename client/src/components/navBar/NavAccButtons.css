@@ -1,0 +1,21 @@
+.navAccButtonsChild {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    margin: 1rem;
+}
+
+.rounded-20 {
+    border-radius: 2rem;
+}
+
+.input-group-append {
+    border-radius: 0 2rem 2rem 0;
+    background-color: white;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}

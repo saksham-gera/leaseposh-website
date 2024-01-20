@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    flex-direction: column;
+}
+.header-nav {
+    position: absolute;
+    z-index: 10;
+}
+.header-bg-overlay {
+    display: flex;
+    position: absolute;
+    background-color: black;
+    align-items: center;
+    opacity: 50%;
+    height: 90vh;
+    width: 100vw;
+    z-index: 0;
+}
+
+.headerFunctional {
+    display: flex;
+    position: absolute;
+    background-color: transparent;
+    align-items: center;
+    height: 90vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+.header-bg {
+    background-image: url("/assets/Banner.webp");
+    background-position: top;
+    background-repeat: no-repeat;
+    position: static;
+    z-index: -1;
+    width: 100vw;
+    height: 90vh;
+}

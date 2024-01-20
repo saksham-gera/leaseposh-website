@@ -1,0 +1,40 @@
+.category-card {
+    display: flex;
+    margin: 2vh 0.80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 0.1vw solid transparent;
+    width: 23vw;
+    height: 65vh;
+    cursor: pointer;
+}
+
+.category-card-bg img{
+    border-radius: 10px;
+    margin: 1vh 1vw;
+    width: 23vw;
+    height: 65vh;
+    object-fit: cover;
+}
+
+.category-card-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    background-color: black;
+    color: white;
+    height: 65vh;
+    width: 23vw;
+    border-radius: 10px;
+    opacity: 0%;
+    position: absolute;
+    z-index: 0;
+}
+
+.category-card-overlay:hover {
+    opacity: 70%
+}
+

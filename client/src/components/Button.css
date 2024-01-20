@@ -1,0 +1,18 @@
+.button {
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid white;
+    width: max-content;
+    cursor: pointer;
+}
+
+.innerText {
+    font-size: 1.25rem;
+    margin: 0.25rem 0.5rem;
+    user-select: none;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}

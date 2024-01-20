@@ -1,0 +1,11 @@
+.navButtonChild {
+    font-size: 0.8rem;
+    margin: 0.5rem 1rem;
+    color: white;
+    opacity: 75%;
+    cursor: pointer;
+}
+
+.navButtonChild:hover {
+    opacity: 100%;
+}

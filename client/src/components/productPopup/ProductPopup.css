@@ -1,0 +1,125 @@
+
+
+.product-popup {
+    user-select: none;
+    margin: 0;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.black-overlay {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 60%;
+    position: fixed;
+    z-index: 0;
+}
+
+.product-popup-container {
+    display: flex;
+    height: 90vh;
+    width: 85vw;
+    background-color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-popup-image {
+    height: 100%;
+    width: 40%;
+    background-color: black;
+    border-radius: 1rem 0 0 1rem;
+}
+
+.product-popup-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.product-popup-details {
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.cross-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    z-index: 100;
+    cursor: pointer;
+    position: absolute;
+    margin-left: 95%;
+}
+
+.product-popup-text {
+    right: -14px;
+    bottom: -14px;
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    color: black;
+    z-index: 1;
+    position: relative;
+}
+
+.product-popup-title {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.product-popup-description {
+    margin: 1rem 0;
+    font-size: 0.75rem;
+}
+
+.product-buttons {
+    height: 9%;
+    z-index: 100;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    bottom: 0px;
+    left: 0px;
+}
+
+.add-to-cart, .buy-now {
+    background-color: black;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.add-to-cart {
+    left: 0;
+}
+.buy-now {
+    right: 0;
+}
+
+.add-to-cart:hover, .buy-now:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
