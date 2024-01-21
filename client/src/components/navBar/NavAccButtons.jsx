@@ -8,28 +8,22 @@ import 'reactjs-popup/dist/index.css';
 import { useState } from "react";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link } from "react-router-dom";
 
 
 export default function NavAccButtons() {
-    const [SearchVisibility, setSearchVisibility] = useState("hidden");
+    const [SearchVisibility, setSearchVisibility] = useState(false);
     return (
         <div className="navAccButtonsChild">
-            <div className="search-input" style={{visibility: SearchVisibility}}>
+            <div className="search-input" style={{visibility: SearchVisibility ? "visible" : "hidden"}}>
                 <input className="form-control rounded-20"  placeholder="Search"></input>
             </div>
-            <div className="search-button" onClick={() => {setSearchVisibility(SearchVisibility == "hidden" ? "visible" : "hidden")}}>
+            <div className="search-button" onClick={() => {setSearchVisibility(!SearchVisibility)}}>
                 <NavButton id="search" buttonName={<SearchIcon />} />
             </div>
-            
-            <NavButton buttonName= {<ShoppingCartRoundedIcon />} />
-            <NavButton buttonName={<FavoriteIcon />} />
-            <Popup trigger={<div><NavButton buttonName = {<PersonIcon />}/></div> } position="left top">
-                <div className="ab">lorem50</div>
-                <div className="sdcsd">sdvcfs</div>
-                <div className="ab">csfs</div>
-                <div className="sdcsd">sdvcfs</div>
-            </Popup>
-            
+            <Link to={"/cart"} style={{textDecoration:"none"}}><NavButton buttonName= {<ShoppingCartRoundedIcon />} /></Link>
+            <Link to={"/wishlist"} style={{textDecoration:"none"}}><NavButton buttonName={<FavoriteIcon />} /></Link>
+            <Link to={"/profile"} style={{textDecoration:"none"}}><NavButton buttonName={<PersonIcon />} /></Link>
         </div>
     );
 }
