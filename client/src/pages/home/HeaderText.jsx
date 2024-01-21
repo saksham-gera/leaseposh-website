@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../components/Button.jsx";
 import "./headerText.css"
 
@@ -6,7 +7,7 @@ export default function HeaderText() {
         <div className="header-text">
             <h5>LEASEPOSH WELCOMES YOU</h5>
             <p>Explore Our Premium Collection Of Posh Wear</p>
-            <Button buttonName="Explore Now"/>
+            <Link to={`/search?q=Explore%20Now`} style={{ textDecoration: "none",color: "white" }}><Button buttonName="Explore Now"/></Link>
         </div>
     );
 }
