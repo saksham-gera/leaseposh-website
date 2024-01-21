@@ -33,7 +33,15 @@
     position: relative;
 }
 
+.wishlist-button {
+    cursor: pointer;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
 .product-popup-image {
+    position: relative;
     height: 100%;
     width: 40%;
     background-color: black;
@@ -101,9 +109,8 @@
 }
 
 .add-to-cart, .buy-now {
-    background-color: black;
     font-weight: 600;
-    color: white;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,11 +122,16 @@
     left: 0;
 }
 .buy-now {
+    background-color: black;
+    color: white;
     right: 0;
 }
 
-.add-to-cart:hover, .buy-now:hover {
-    cursor: pointer;
+.buy-now:hover {
     background-color: white;
     color: black;
+}
+.cart-transition:hover {
+    padding: 0.5rem 5rem;
+    border: 1px dotted black;
 }
