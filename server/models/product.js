@@ -6,6 +6,8 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
+    gender: String,
+    category: String,
     description: String,
     image: String,
     price: Number

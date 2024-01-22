@@ -26,7 +26,7 @@ export default function WishlistPage({ func }) {
                             </div>
                         </div>
                     </div>
-                    <ProductsGrid func={func} />
+                    <ProductsGrid func={func} api="wishlist" />
                 </div>
             </div>
             <Footer />

@@ -29,6 +29,7 @@
 
 .header-bg {
     background-image: url("/assets/Banner.webp");
+    background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
     position: static;

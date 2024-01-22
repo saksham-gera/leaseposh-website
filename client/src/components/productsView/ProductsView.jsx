@@ -3,14 +3,22 @@ import Button from "../Button.jsx";
 import ProductCard from "./productCard/ProductCard";
 import "./ProductsView.css"
 
-export default function ProductsView({ func, title = "Title" }) {
+export default function ProductsView({ func, category, gender}) {
+    let urlToProductsPage = "/search?";
+    if(gender) {
+        urlToProductsPage += `gender=${encodeURI(gender)}&`;
+    }
+    if(category) {
+        urlToProductsPage += `category=${encodeURI(category)}`;
+    }
+
     return (
         <div className="products-view">
             <div className="products-view-top">
                 <div className="title-of-view">
-                    {title}
+                    {category}
                 </div>
-                <Link to={`/search?q=${title}`} style={{ textDecoration: "none",color: "black" }}>
+                <Link to={urlToProductsPage} style={{ textDecoration: "none",color: "black" }}>
                     <div className="view-all-button">
                         <div className="innerText">
                             View All
