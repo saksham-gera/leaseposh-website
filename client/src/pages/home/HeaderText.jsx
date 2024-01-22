@@ -7,7 +7,7 @@ export default function HeaderText() {
         <div className="header-text">
             <h5>LEASEPOSH WELCOMES YOU</h5>
             <p>Explore Our Premium Collection Of Posh Wear</p>
-            <Link to={`/search?q=Explore%20Now`} style={{ textDecoration: "none",color: "white" }}><Button buttonName="Explore Now"/></Link>
+            <Link to={`/search`} style={{ textDecoration: "none",color: "white" }}><Button buttonName="Explore Now"/></Link>
         </div>
     );
 }
