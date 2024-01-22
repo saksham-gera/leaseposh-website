@@ -8,7 +8,10 @@ const userSchema = new Schema({
     },
     email: String,
     phone: String,
-    wishlist: String,
+    wishlist: {
+        type: Schema.Types.ObjectId,
+        ref: "wishlist"
+    }
 });
 
 
