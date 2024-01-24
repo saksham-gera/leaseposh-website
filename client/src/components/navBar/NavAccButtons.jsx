@@ -16,7 +16,7 @@ export default function NavAccButtons() {
     return (
         <div className="navAccButtonsChild">
             <div className="search-input" style={{visibility: SearchVisibility ? "visible" : "hidden"}}>
-                <input className="form-control rounded-20"  placeholder="Search"></input>
+                <input id="search" className="form-control rounded-20"  placeholder="Search"></input>
             </div>
             <div className="search-button" onClick={() => {setSearchVisibility(!SearchVisibility)}}>
                 <NavButton id="search" buttonName={<SearchIcon />} />
