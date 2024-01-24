@@ -7,6 +7,7 @@ import ProductsPage from './pages/productsPage/ProductsPage.jsx';
 import ScrollToTop from './components/scrollToTop/ScrollToTop.jsx';
 import WishlistPage from './pages/wishlistPage/WishlistPage.jsx';
 import Trial from './pages/Trial.jsx';
+import CartPage from './pages/cartPage/CartPage.jsx';
 
 export default function App() {
   const [PopupDisplay,setPopupDisplay] = useState("none");
@@ -34,6 +35,7 @@ export default function App() {
         <Route path='/' element={<Home func={popupDisplay}/>}></Route>
         <Route path='/search' element={<ProductsPage func={popupDisplay}/>}></Route>
         <Route path='/wishlist' element={<WishlistPage func={popupDisplay}/>}></Route>
+        <Route path='/cart' element={<CartPage />}></Route>
       </Routes>
       
     </div>
