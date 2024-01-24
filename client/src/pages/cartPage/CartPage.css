@@ -1,0 +1,23 @@
+.cart-page {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cart-page-container {
+    width: 100%;
+    margin-top: 10vh;
+    padding: 5vh 5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading-noOfItems {
+    display: flex;
+    justify-content: space-between;
+}
+
+.no-of-cart-items {
+    opacity: 70%;
+}
