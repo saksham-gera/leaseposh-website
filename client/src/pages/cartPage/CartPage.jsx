@@ -20,7 +20,10 @@ export default function CartPage() {
                     </div>
                     <OrderItems />
                     <PromoCodeComponent />
-                    <BillComponent />    
+                    <BillComponent /> 
+                    <div className="place-order-button">
+                        <button className="btn btn-dark">PLACE ORDER</button>
+                    </div>  
                 </div>
             </div>
             <Footer />
