@@ -21,3 +21,9 @@
 .no-of-cart-items {
     opacity: 70%;
 }
+
+.place-order-button {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;    
+}
