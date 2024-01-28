@@ -7,6 +7,7 @@ import "./Home.css";
 import React from 'react'
 
 export default function Home({func}) {
+  
   return (
     <div>
         <div className="headerParent">

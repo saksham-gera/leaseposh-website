@@ -9,7 +9,6 @@ export default function ProductsPage({func}) {
 
   return (
     <div className="products-page">
-        <NavBar />
         <div className="products-page-container">
           <div className="products-filter">
             <div className="filter-heading">
