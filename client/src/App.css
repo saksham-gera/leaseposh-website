@@ -9,3 +9,10 @@
     align-items: center;
     flex-direction: column;
 }
+
+.owner-login-button {
+    position: fixed;
+    z-index: 12;
+    right: 1rem;
+    bottom: 0;
+}

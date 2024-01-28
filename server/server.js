@@ -3,8 +3,13 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const cors = require('cors');
-
+const User = require("./models/user.js");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
 const productRouter = require("./routes/product.js");
+const userRouter = require("./routes/user.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -15,6 +20,17 @@ async function main() {
     await mongoose.connect(MONGO_URL);
 }
 
+const sessionOptions = {
+    secret: "mysupersecretcode",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true
+    }
+}
+
 main()
 .then(() => {
     console.log("Connected to mongoose");
@@ -23,22 +39,20 @@ main()
     console.log(err);
 });
 
+app.use(session(sessionOptions));
+app.use(flash());
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use("/product", productRouter);
+app.use("/", userRouter);
 
-app.get("/message", (req, res) => {
-    res.json({ message: "Hello from server!" });
-  });
-
-app.get("/api" , (req,res) => {
-    const data = {name : "one",name2 : "two",name3 : "three"};
-    console.log("connected")
-    res.json(data);
-});
-
-app.post("/post", (req,res) => {
-    console.log("connected to react");
-    res.redirect("http://localhost:5173/");
-});
 
 app.get('*', function(req, res){
     console.log('404ing');
