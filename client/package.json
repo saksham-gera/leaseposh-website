@@ -11,7 +11,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "proxy": "http://localhost:4000",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
@@ -20,7 +19,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.6.3",
+    "axios": "^1.6.7",
     "bootstrap": "^5.3.2",
     "jquery": "^3.7.1",
     "popper.js": "^1.16.1",

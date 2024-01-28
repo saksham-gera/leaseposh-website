@@ -9,7 +9,6 @@ import Footer from "../../components/footer/Footer";
 export default function CartPage() {
     return (
         <div className="cart-page">
-            <NavBar />
             <div className="cart-page-container">
                 <div className="cart-items">
                     <div className="heading-noOfItems">

@@ -1,0 +1,20 @@
+.account-drop-down {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    position: absolute;
+    top: 7.5vh;
+    right: 2vw;
+    width: 10vw;
+    background-color: rgba(255,255,255, 0.7);
+    color: black;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: smaller;
+}
+
+.acc-menu-item:hover{
+    cursor: pointer;
+    font-weight: 600;
+}

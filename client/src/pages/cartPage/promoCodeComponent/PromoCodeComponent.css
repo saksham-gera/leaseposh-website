@@ -9,8 +9,3 @@
     height: 100%;
     margin-left: 2rem;
 }
-
-::-ms-input-placeholder {
-    color: black; /*Change the placeholder color*/
-    opacity: 0; /*Change the opacity between 0 and 1*/
-}

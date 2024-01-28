@@ -9,7 +9,6 @@ export default function WishlistPage({ func }) {
     return (
 
         <div className="wishlist-page">
-            <NavBar />
             <div className="wihslist-page-container">
                 <div className="products-filter">
                     <div className="filter-heading">
