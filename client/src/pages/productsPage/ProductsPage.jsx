@@ -5,7 +5,6 @@ import ProductsGrid from "./productsGrid/ProductsGrid";
 import Footer from "../../components/footer/Footer";
 
 export default function ProductsPage({func}) {
-  
 
   return (
     <div className="products-page">
