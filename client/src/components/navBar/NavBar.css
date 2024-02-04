@@ -1,5 +1,6 @@
 .navBarChild {
     width: 100%;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,6 +9,17 @@
     top: 0;
     position: fixed;
     z-index: 99;
+}
+
+.navBarChild img {
+    object-fit: contain;
+    opacity: 70%;
+    width: 5vw;
+    height: 80%;
+}
+
+.navBarChild img:hover {
+    opacity: 100%;
 }
 
 .navBarChild h4 {
