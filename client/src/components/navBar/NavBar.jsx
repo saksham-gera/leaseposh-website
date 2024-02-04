@@ -10,7 +10,7 @@ export default function NavBar({loginPopupDisplay, bgColor= "black"}) {
         <div className="navBarChild" style={{backgroundColor: bgColor}}>
             <NavButtons />
             <div className="spacer"></div>
-            <Link to={"/"} style={{textDecoration:"none"}} onClick={location.reload}><h4>Lease Posh</h4></Link>
+            <Link to={"/"} style={{textDecoration:"none"}} onClick={location.reload}><img src="/LogoOnlyWhite.png"></img></Link>
             <NavAccButtons loginPopupDisplay={loginPopupDisplay}/>
         </div>
     );
