@@ -129,7 +129,7 @@
 }
 
 .buy-now:hover {
-    background-color: white;
+    background-color: rgba(39, 186, 2, 0.819);
     color: black;
 }
 .cart-transition:hover {

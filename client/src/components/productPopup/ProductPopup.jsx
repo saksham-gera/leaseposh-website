@@ -3,20 +3,50 @@ import React, { useState } from 'react'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import axios from "axios";
+import { Link } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProductPopup({popupDisplay,id,imgURL = "https://images.unsplash.com/photo-1638456266087-09b1d160748b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" , title = "Title", description , price}) {
   const [Wishlisted, setWishlisted ] = useState(false);
-  console.log(id);
+  const notifyWishlist = (status) => {
+    if(status) {
+      toast.success("Product Wishlisted!")
+    } else {
+      toast.error("Product Removed From Wishlist!")
+    }
+  };
+
+  const notifyCart = (status) => {
+    if(status) {
+      toast.success("Product Added To Cart!")
+    } else {
+      toast.error("Product Removed From Cart!")
+    }
+  };
 
   const addToWishlist = async () => {
-    const response = await axios.put(`http://localhost:4000/wishlist/${id}`,null, {
+      const response = await axios.put(`http://localhost:4000/wishlist/${id}`,null, {
         headers: { Authorization: localStorage.getItem('token')  }
       });
 
     if(response.status == "200") {
       setWishlisted(!Wishlisted);
+      notifyWishlist(!Wishlisted);
     }
   }
+
+  const addToCart = async () => {
+    const response = await axios.put(`http://localhost:4000/cart/${id}`,null, {
+        headers: { Authorization: localStorage.getItem('token')  }
+      });
+
+    if(response.status == "200") {
+      notifyCart(true);
+    }
+  }
+
 
 return (
       <div className="product-popup">
@@ -45,11 +75,11 @@ return (
             </div>
             <div className="product-buttons">
                 <div className="add-to-cart">
-                  <div className="cart-transition">
+                  <div className="cart-transition" onClick={addToCart}>
                     ADD TO CART
                   </div>
                 </div>
-                <div className="buy-now">BUY NOW</div>
+                <div className="buy-now"><Link to="/cart" onClick={() => {addToCart();popupDisplay("none","","","","");}} style={{textDecoration:"none", color: "white"}}>BUY NOW</Link></div>
             </div>
           </div>
         </div>
