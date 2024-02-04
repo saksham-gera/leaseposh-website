@@ -2,7 +2,8 @@ import "./BillComponent.css";
 
 import React from 'react'
 
-export default function BillComponent() {
+export default function BillComponent({amount}) {
+  
   return (
     <div className="bill-component">
         <div className="price-details">
@@ -53,7 +54,7 @@ export default function BillComponent() {
               Amount
             </div>
             <div className="price">
-              $1,590
+              {amount}
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 
+
 export default function ProductsGrid({ func, api }) {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -11,7 +12,7 @@ export default function ProductsGrid({ func, api }) {
     const gender = searchParams.get('gender');
     const [Products, setProducts] = useState([]);
     let url = "http://localhost:4000/";
-
+    
     if (api == "cart") {
         url += api;
     } else if (api == "wishlist") {
@@ -25,7 +26,7 @@ export default function ProductsGrid({ func, api }) {
             url += `category=${encodeURI(category)}`;
         }
     }
-
+    
     const fetchProducts = async () => {
         try {
             if (!localStorage.getItem('token') && (api=="wishlist" || api =="cart")) {

@@ -2,10 +2,45 @@ import "./CartItemCard.css";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 import React, { useState } from 'react'
+import axios from "axios";
 
-export default function CartItemCard() {
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+export default function CartItemCard({ refetch, id, productImg, title, brand = "Siyaram's", price, srno }) {
     const [WishlistActionButtonColor, setWishlistActionButtonColor] = useState("black");
     const [DeleteActionButtonColor, setDeleteActionButtonColor] = useState("black");
+
+    const notifyCart = () => {
+        toast.error("Product Removed From Cart!")
+    };
+
+    const notifyWishlist = () => {
+        toast.success("Product Moved To Wishlist!")
+      };
+
+    const removeFromCart = async () => {
+        const response = await axios.put(`http://localhost:4000/cart/${id}/delete`, null, {
+            headers: { Authorization: localStorage.getItem('token') }
+        });
+
+        if (response.status == "200") {
+            console.log("deleted")
+            notifyCart();
+            refetch();
+        }
+    }
+
+    const addToWishlist = async () => {
+        const response = await axios.put(`http://localhost:4000/wishlist/${id}`,null, {
+          headers: { Authorization: localStorage.getItem('token')  }
+        });
+  
+      if(response.status == "200") {
+        removeFromCart();
+        notifyWishlist();
+      }
+    }
 
     return (
         <div className="cart-item-card">
@@ -13,21 +48,21 @@ export default function CartItemCard() {
                 <div className="select-button-sr-no">
                     <input type="checkbox" className="form-check-input" defaultChecked></input>
                     <div className="sr-no">
-                        1
+                        {srno}
                     </div>
                 </div>
 
                 <div className="item-details">
                     <div className="item-img">
-                        <img src="https://images.unsplash.com/photo-1693336429270-094637e16d38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></img>
+                        <img src={productImg}></img>
                     </div>
                     <div className="item-details-and-buttons">
                         <div className="cart-item-details">
                             <div className="cart-item-brand">
-                                Siyaram's
+                                {brand}
                             </div>
                             <div className="cart-item-title">
-                                Women's Lehanga
+                                {title}
                             </div>
                             <div className="size-quantity">
                                 <div className="cart-item-select">
@@ -49,18 +84,18 @@ export default function CartItemCard() {
                             </div>
                         </div>
                         <div className="item-price">
-                            $7,890
+                            {price}
                         </div>
                     </div>
                 </div>
             </div>
 
             <div className="cart-item-card-right">
-                <div className="cart-item-moveToWishlist" onMouseOver={() => {setWishlistActionButtonColor("white")}} onMouseLeave={() => {setWishlistActionButtonColor("black")}}>
-                    <FavoriteBorderOutlinedIcon style={{color: WishlistActionButtonColor}}/>
+                <div className="cart-item-moveToWishlist" onClick={addToWishlist} onMouseOver={() => { setWishlistActionButtonColor("white") }} onMouseLeave={() => { setWishlistActionButtonColor("black") }}>
+                    <FavoriteBorderOutlinedIcon style={{ color: WishlistActionButtonColor }} />
                 </div>
-                <div className="cart-item-delete" onMouseOver={() => {setDeleteActionButtonColor("white")}} onMouseLeave={() => {setDeleteActionButtonColor("black")}}>
-                    <DeleteOutlineRoundedIcon style={{color: DeleteActionButtonColor}}/>
+                <div className="cart-item-delete" onClick={removeFromCart} onMouseOver={() => { setDeleteActionButtonColor("white") }} onMouseLeave={() => { setDeleteActionButtonColor("black") }}>
+                    <DeleteOutlineRoundedIcon style={{ color: DeleteActionButtonColor }} />
                 </div>
             </div>
 

@@ -1,18 +1,25 @@
+//miscellaneous
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const flash = require("connect-flash");
+
+//express
 const express = require("express");
+const session = require("express-session");
 const app = express();
 const cors = require('cors');
+
+//passport
 const User = require("./models/user.js");
-const Wishlist = require("./models/wishlist.js");
-const Cart = require("./models/cart.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+
+//routers
 const productRouter = require("./routes/product.js");
 const userRouter = require("./routes/user.js");
 const wishlistRouter = require("./routes/wishlist.js");
-const session = require("express-session");
-const flash = require("connect-flash");
+const cartRouter = require("./routes/cart.js");
+
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -53,6 +60,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use("/cart", cartRouter);
 app.use("/wishlist", wishlistRouter);
 app.use("/product", productRouter);
 app.use("/", userRouter);
