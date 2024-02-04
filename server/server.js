@@ -4,10 +4,13 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const User = require("./models/user.js");
+const Wishlist = require("./models/wishlist.js");
+const Cart = require("./models/cart.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const productRouter = require("./routes/product.js");
 const userRouter = require("./routes/user.js");
+const wishlistRouter = require("./routes/wishlist.js");
 const session = require("express-session");
 const flash = require("connect-flash");
 
@@ -50,6 +53,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use("/wishlist", wishlistRouter);
 app.use("/product", productRouter);
 app.use("/", userRouter);
 

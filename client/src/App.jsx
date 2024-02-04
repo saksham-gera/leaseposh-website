@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/home/Home.jsx';
-import ProductPopup from './components/productPopup/productPopup.jsx';
+import ProductPopup from './components/productPopup/ProductPopup.jsx';
 import ProductsPage from './pages/productsPage/ProductsPage.jsx';
 import ScrollToTop from './components/scrollToTop/ScrollToTop.jsx';
 import WishlistPage from './pages/wishlistPage/WishlistPage.jsx';
@@ -17,13 +17,15 @@ export default function App() {
   const [PopupTitle, setPopupTitle] = useState("");
   const [PopupPrice, setPopupPrice] = useState("");
   const [PopupDescription, setPopupDescription] = useState("");
+  const [PopupID, setPopupID] = useState("");
   const [LoginSignupDisplay, setLoginSignupDisplay] = useState("none");
 
   const loginPopupFunc = (loginDisplay) => {
     setLoginSignupDisplay(loginDisplay);
   }
 
-  let popupDisplay = (display, imageURL, title, description, price) => {
+  let popupDisplay = (display,id, imageURL, title, description, price) => {
+    setPopupID(id);
     setPopupDisplay(display);
     setPopupImageURL(imageURL);
     setPopupTitle(title);
@@ -54,7 +56,7 @@ export default function App() {
         <LoginSignupPopup func={loginPopupFunc} />
       </div>
       <div className="product-popup-visibility" style={{ display: PopupDisplay }}>
-        <ProductPopup popupDisplay={popupDisplay} description={PopupDescription} title={PopupTitle} imgURL={PopupImageURL} price={PopupPrice} />
+        <ProductPopup id={PopupID} popupDisplay={popupDisplay} description={PopupDescription} title={PopupTitle} imgURL={PopupImageURL} price={PopupPrice} />
       </div>
 
       <Routes>

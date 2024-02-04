@@ -2,36 +2,54 @@ import ProductCard from "../../../components/productsView/productCard/ProductCar
 import "./ProductsGrid.css";
 import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react'
+import axios from "axios";
 
-export default function ProductsGrid({func}) {
+export default function ProductsGrid({ func, api }) {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const category = searchParams.get('category');
     const gender = searchParams.get('gender');
     const [Products, setProducts] = useState([]);
+    let url = "http://localhost:4000/";
 
-
-    let url = "http://localhost:4000/product?";
-    if (gender) {
-        url += `gender=${encodeURI(gender)}&`;
+    if (api == "cart") {
+        url += api;
+    } else if (api == "wishlist") {
+        url += api;
+    } else {
+        url += "product?";
+        if (gender) {
+            url += `gender=${encodeURI(gender)}&`;
+        }
+        if (category) {
+            url += `category=${encodeURI(category)}`;
+        }
     }
-    if (category) {
-        url += `category=${encodeURI(category)}`;
-    }
 
-    useEffect(() => {
-        fetch(url)
-            .then((res) => res.json())
-            .then((data) => setProducts(data))
-            .then(console.log(Products))
-            .catch(error => console.error(error));
-    }, []);
+    const fetchProducts = async () => {
+        try {
+            if (!localStorage.getItem('token') && (api=="wishlist" || api =="cart")) {
+                console.log("Please Login First!")
+            } else {
+                let response = await axios.get(url, {
+                    headers: { Authorization: localStorage.getItem('token') },
+                });
+                if (response.status == "200") {
+                    setProducts(response.data);
+                }
+            }
+        } catch (error) {
+            console.error('products fetch failed', error.response);
+        }
+    }
+    useEffect(() => { fetchProducts() }, [])
+
 
     return (
         <div className="products-page-cards">
             <div className="grid-header">
                 <div className="no-of-results">{Products.length} Results</div>
-                <h2>{category || gender || "Explore Our Best Collection"}</h2>
+                <h2>{category || gender || api || "Explore Our Best Collection"}</h2>
                 <div className="view-all-button">
                     <div className="innerText">
                         Sort By
@@ -40,7 +58,7 @@ export default function ProductsGrid({func}) {
             </div>
             <div className="products-grid">
                 {Products.map(product =>
-                    <ProductCard popupDisplay={func} imageURL={product.image} title={product.title} description={product.description} price={product.price} />
+                    <ProductCard popupDisplay={func} id={product._id} imageURL={product.image} title={product.title} description={product.description} price={product.price} />
                 )}
             </div>
         </div>
