@@ -1,20 +1,27 @@
-const passport = require("passport");
 const User = require("../models/user.js");
+const Wishlist = require("../models/wishlist.js");
 const jwt = require('jsonwebtoken');
+
 
 
 module.exports.signup = async (req, res) => {
     try {
         let { username, email, password } = req.body;
-        const newUser = new User({ email, username });
+        let newWishlist = new Wishlist({products: []});
+        let newUser = new User({wishlist: newWishlist._id , email, username});
         const registeredUser = await User.register(newUser, password);
-        console.log(registeredUser);
-        req.login(registeredUser, (err) => {
+
+        req.login(registeredUser, async (err) => {
             if (err) {
                 return next(err);
             }
             console.log("signed up successfully");
-            const token = jwt.sign({ username: newUser.username }, 'mysupersecretcode');
+
+            await newWishlist.save();
+            let wishlistWithUserId = await Wishlist.findByIdAndUpdate(newWishlist._id, {user_id: newUser._id});
+            await wishlistWithUserId.save();
+
+            const token = jwt.sign({ username: newUser.username, id: newUser._id }, 'mysupersecretcode');
             res.json({ token });
         });
     } catch (err) {
@@ -30,7 +37,8 @@ module.exports.login = async (req, res) => {
     // let redirectUrl = res.locals.redirectUrl || "/";
     console.log("logged in successfully");
     const user = req.user;
-    const token = jwt.sign({ username: user.username }, 'mysupersecretcode');
+    console.log(user);
+    const token = jwt.sign({ username: user.username, id: user._id}, 'mysupersecretcode');
     res.json({ token });
 }
 

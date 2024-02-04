@@ -8,19 +8,23 @@ export const AuthProvider = ({ children }) => {
 
   const isLoggedIn = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/login', {
-        headers: { Authorization: localStorage.getItem('token')  },
-      });
-      console.log('User profile:', response.data);
-      if(response.data) {
-        setLoggedIn(true);
-        setResponse(response);
+      if (!localStorage.getItem('token')) {
+        console.log("Please Login First!")
+      } else {
+        const response = await axios.get('http://localhost:4000/login', {
+          headers: { Authorization: localStorage.getItem('token') },
+        });
+        console.log('User profile:', response.data);
+        if (response.data) {
+          setLoggedIn(true);
+          setResponse(response);
+        }
       }
     } catch (error) {
       console.error('Profile fetch failed', error.response);
     }
   }
-  useEffect(() => {isLoggedIn()}, [])
+  useEffect(() => { isLoggedIn() }, [])
 
   const logout = () => {
     setLoggedIn(false);

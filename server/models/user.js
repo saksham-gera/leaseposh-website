@@ -7,6 +7,14 @@ const userSchema = new Schema({
     email : {
         type : String,
         required: true
+    },
+    wishlist: {
+        type: Schema.Types.ObjectId,
+        ref: 'wishlist'
+    },
+    cart: {
+        type: Schema.Types.ObjectId,
+        ref: 'cart'
     }
 });
 
