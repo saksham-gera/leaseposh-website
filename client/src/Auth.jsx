@@ -4,7 +4,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [IsLoggedIn, setLoggedIn] = useState(false);
-  const [response, setResponse] = useState();
+  const [Response, setResponse] = useState();
 
   const isLoggedIn = async () => {
     try {
@@ -18,6 +18,8 @@ export const AuthProvider = ({ children }) => {
         if (response.data) {
           setLoggedIn(true);
           setResponse(response);
+        } else {
+          logout();
         }
       }
     } catch (error) {
@@ -28,12 +30,13 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setLoggedIn(false);
+    setResponse({});
     localStorage.removeItem('token');
     window.location.reload();
   };
 
   return (
-    <AuthContext.Provider value={{ IsLoggedIn, response, logout }}>
+    <AuthContext.Provider value={{ IsLoggedIn, Response, logout }}>
       {children}
     </AuthContext.Provider>
   );
