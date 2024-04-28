@@ -16,7 +16,7 @@ export default function LoginComponent({ func }) {
     const handleLogin = async (e) => {
         try {
             e.preventDefault();
-            const response = await axios.post('http://localhost:4000/login', formData);
+            const response = await axios.post('https://leaseposh-server.vercel.app/login', formData);
 
             if (response.status == 200) {
                 const { token } = response.data;

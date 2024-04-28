@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 export default function OrderItems({amountFetch}) {
   const [Products, setProducts] = useState([]);
-  let url = "http://localhost:4000/cart";
+  let url = "https://leaseposh-server.vercel.app/cart";
   let srno = 1 ;
   let productPrice = 0;
   const fetchProducts = async () => {

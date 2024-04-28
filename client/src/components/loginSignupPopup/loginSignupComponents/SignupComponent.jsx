@@ -19,7 +19,7 @@ export default function SignupComponent({ func }) {
     const handleSignup = async (e) => {
         try {
             e.preventDefault();
-            const response = await axios.post('http://localhost:4000/signup', formData);
+            const response = await axios.post('https://leaseposh-server.vercel.app/signup', formData);
 
             if (response.status == 200) {
                 const { token } = response.data;
