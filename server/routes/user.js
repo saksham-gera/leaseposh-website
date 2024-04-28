@@ -14,7 +14,6 @@ router
     .route("/login")
     .post(passport.authenticate("local", { failureRedirect: '/'}), userController.login)
     .get(verifyToken , (req, res) => {
-        console.log("reached here")
         res.json(req.user);
     });
     

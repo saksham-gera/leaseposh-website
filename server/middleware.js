@@ -10,7 +10,6 @@ module.exports.saveRedirectUrl = (req,res,next) => {
 module.exports.verifyToken = (req, res, next) => {
     const token = req.headers.authorization;
     if (!token) {
-        console.log(token);
         return res.status(401).send('Unauthorized');
     }
 

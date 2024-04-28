@@ -16,7 +16,6 @@ module.exports.index = wrapAsync (async (req, res) => {
             allProducts = await Product.find({category: req.query.category});
         }
         
-        console.log(allProducts);
         res.json(allProducts);
     } else {
         allProducts = await Product.find({});
@@ -28,6 +27,5 @@ module.exports.index = wrapAsync (async (req, res) => {
 module.exports.createProduct = async (req, res) => {
     const newProduct = new Product(req.body.product);
     await newProduct.save();
-    console.log("Product Saved")
     res.redirect("http://localhost:5173/");
 }
