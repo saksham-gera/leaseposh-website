@@ -1,4 +1,4 @@
-import "./categoryCard.css"
+import "./CategoryCard.css"
 
 export default function CategoryCard({title,imageURL}) {
     return(
