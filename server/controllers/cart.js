@@ -12,9 +12,6 @@ module.exports.addToCart = wrapAsync(async (req, res) => {
     const loggedInUserID = req.user.id;
     let loggedInUser = await User.findById(loggedInUserID);
     let loggedInUserCart = await Cart.findById(loggedInUser.cart);
-    console.log(loggedInUserCart);
-    console.log("user id: " + loggedInUserID);
-    console.log("product id:" + id);
     let cartUpdated;
     if (loggedInUserCart.products.includes(currProduct._id)) {
         cartUpdated = await Cart.findByIdAndUpdate(loggedInUser.cart, { $pull: { "products": currProduct._id } });
@@ -26,7 +23,6 @@ module.exports.addToCart = wrapAsync(async (req, res) => {
 });
 
 module.exports.allProducts = wrapAsync (async (req, res) => {
-    console.log("accessing cart");
     const loggedInUserID = req.user.id;
     const loggedInUser = await User.findById(loggedInUserID);
     const loggedInUserCart = await Cart.findById(loggedInUser.cart);
@@ -40,7 +36,6 @@ module.exports.deleteFromCart = async (req, res) => {
     let { id } = req.params;
     //here id is productID
     const currProduct = await Product.findById(id);
-    console.log("deleting from cart");
     const loggedInUserID = req.user.id;
     const loggedInUser = await User.findById(loggedInUserID);
     const loggedInUserCart = await Cart.findByIdAndUpdate(loggedInUser.cart, { $pull: { "products": currProduct._id } });
