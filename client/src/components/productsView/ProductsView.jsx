@@ -20,16 +20,13 @@ export default function ProductsView({ func, category, gender }) {
 
     const fetchProducts = async () => {
         try {
-            if (!localStorage.getItem('token')) {
-                console.log("Please Login First!")
-            } else {
-                let response = await axios.get(url, {
+            let response = await axios.get(url, {
                     headers: { Authorization: localStorage.getItem('token') },
                 });
                 if (response.status == "200") {
                     setProducts(response.data);
                 }
-            }
+            
         } catch (error) {
             console.error('products fetch failed', error.response);
         }
