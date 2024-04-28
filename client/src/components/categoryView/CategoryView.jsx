@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import CategoryCard from "./categoryCard/CategoryCard";
-import "./categoryView.css"
+import "./CategoryView.css"
 
 export default function CategoryView() {
     return(
