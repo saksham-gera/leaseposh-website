@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function ProductsView({ func, category, gender }) {
     let i = 0;
     const [Products, setProducts] = useState([]);
-    let url = "http://localhost:4000/product?";
+    let url = "https://leaseposh-server.vercel.app/product?";
     
     let urlToProductsPage = "/search?";
     if (gender) {

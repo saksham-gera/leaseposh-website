@@ -27,5 +27,5 @@ module.exports.index = wrapAsync (async (req, res) => {
 module.exports.createProduct = async (req, res) => {
     const newProduct = new Product(req.body.product);
     await newProduct.save();
-    res.redirect("http://localhost:5173/");
+    res.redirect("https://leaseposh.vercel.app/");
 }

@@ -4,7 +4,7 @@ export default function Trial() {
     const [Products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/product")
+    fetch("https://leaseposh-server.vercel.app/product")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .then(console.log(Products))
@@ -14,7 +14,7 @@ export default function Trial() {
   return (
     <div>
         <form
-            action='http://localhost:4000/post'
+            action='https://leaseposh-server.vercel.app/post'
             method='post'
             className='form'
         >
