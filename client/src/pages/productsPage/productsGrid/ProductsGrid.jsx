@@ -1,26 +1,67 @@
 import ProductCard from "../../../components/productsView/productCard/ProductCard";
 import "./ProductsGrid.css";
-import React from 'react'
+import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import axios from "axios";
 
-export default function ProductsGrid({ func }) {
+
+export default function ProductsGrid({ func, api }) {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const category = searchParams.get('category');
+    const gender = searchParams.get('gender');
+    const [Products, setProducts] = useState([]);
+    let url = "https://leaseposh-server.vercel.app/";
+    
+    if (api == "cart") {
+        url += api;
+    } else if (api == "wishlist") {
+        url += api;
+    } else {
+        url += "product?";
+        if (gender) {
+            url += `gender=${encodeURI(gender)}&`;
+        }
+        if (category) {
+            url += `category=${encodeURI(category)}`;
+        }
+    }
+    
+    const fetchProducts = async () => {
+        try {
+            if (!localStorage.getItem('token') && (api=="wishlist" || api =="cart")) {
+                console.log("Please Login First!")
+            } else {
+                let response = await axios.get(url, {
+                    headers: { Authorization: localStorage.getItem('token') },
+                });
+                if (response.status == "200") {
+                    setProducts(response.data);
+                }
+            }
+        } catch (error) {
+            console.error('products fetch failed', error.response);
+        }
+    }
+    useEffect(() => { fetchProducts() }, [])
+
+
     return (
-        <div className="products-grid">
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1638456266087-09b1d160748b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1693336429270-094637e16d38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://plus.unsplash.com/premium_photo-1682090778813-3938ba76ee57?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1610047402714-307d99a677db?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1610047402714-307d99a677db?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1638456266087-09b1d160748b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1693336429270-094637e16d38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://plus.unsplash.com/premium_photo-1682090778813-3938ba76ee57?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1638456266087-09b1d160748b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1693336429270-094637e16d38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://plus.unsplash.com/premium_photo-1682090778813-3938ba76ee57?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1610047402714-307d99a677db?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1610047402714-307d99a677db?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hlcndhbml8ZW58MHx8MHx8fDA%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1638456266087-09b1d160748b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://images.unsplash.com/photo-1693336429270-094637e16d38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-            <ProductCard popupDisplay={func} imageURL="https://plus.unsplash.com/premium_photo-1682090778813-3938ba76ee57?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+        <div className="products-page-cards">
+            <div className="grid-header">
+                <div className="no-of-results">{Products.length} Results</div>
+                <h2>{category || gender || api || "Explore Our Best Collection"}</h2>
+                <div className="view-all-button">
+                    <div className="innerText">
+                        Sort By
+                    </div>
+                </div>
+            </div>
+            <div className="products-grid">
+                {Products.map(product =>
+                    <ProductCard popupDisplay={func} id={product._id} imageURL={product.image} title={product.title} description={product.description} price={product.price} />
+                )}
+            </div>
         </div>
     )
 }

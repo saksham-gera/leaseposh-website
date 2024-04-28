@@ -1,18 +1,17 @@
-import NavAccButtons from "./navAccButtons";
+import NavAccButtons from "./NavAccButtons";
 import NavButtons from "./NavButtons";
-import "./navBar.css"
-import { useState, useEffect } from "react";
+import "./NavBar.css"
+import { Link } from "react-router-dom";
 
 
-export default function NavBar({ bgColor= "black"}) {
-
+export default function NavBar({loginPopupDisplay, bgColor= "black"}) {
 
     return (  
         <div className="navBarChild" style={{backgroundColor: bgColor}}>
             <NavButtons />
             <div className="spacer"></div>
-            <h4>Lease Posh</h4>
-            <NavAccButtons />
+            <Link to={"/"} style={{textDecoration:"none"}} onClick={location.reload}><img src="/LogoOnlyWhite.png"></img></Link>
+            <NavAccButtons loginPopupDisplay={loginPopupDisplay}/>
         </div>
     );
 }

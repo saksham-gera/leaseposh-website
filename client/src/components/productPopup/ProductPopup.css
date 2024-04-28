@@ -8,7 +8,7 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,14 +26,22 @@
 .product-popup-container {
     display: flex;
     height: 90vh;
-    width: 85vw;
+    width: 85%;
     background-color: white;
     border-radius: 1rem;
     overflow: hidden;
     position: relative;
 }
 
+.wishlist-button {
+    cursor: pointer;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
 .product-popup-image {
+    position: relative;
     height: 100%;
     width: 40%;
     background-color: black;
@@ -101,9 +109,8 @@
 }
 
 .add-to-cart, .buy-now {
-    background-color: black;
     font-weight: 600;
-    color: white;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,14 +119,20 @@
 }
 
 .add-to-cart {
+    background-color: white;
     left: 0;
 }
 .buy-now {
+    background-color: black;
+    color: white;
     right: 0;
 }
 
-.add-to-cart:hover, .buy-now:hover {
-    cursor: pointer;
-    background-color: white;
+.buy-now:hover {
+    background-color: rgba(39, 186, 2, 0.819);
     color: black;
+}
+.cart-transition:hover {
+    padding: 0.5rem 5rem;
+    border: 1px dotted black;
 }
