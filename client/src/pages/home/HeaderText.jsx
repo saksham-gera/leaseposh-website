@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../../components/Button.jsx";
-import "./headerText.css"
+import "./HeaderText.css"
 
 export default function HeaderText() {
     return (
