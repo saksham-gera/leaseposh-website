@@ -11,7 +11,7 @@ export default function ProductsGrid({ func, api }) {
     const category = searchParams.get('category');
     const gender = searchParams.get('gender');
     const [Products, setProducts] = useState([]);
-    let url = "http://localhost:4000/";
+    let url = "https://leaseposh-server.vercel.app/";
     
     if (api == "cart") {
         url += api;

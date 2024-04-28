@@ -27,7 +27,7 @@ export default function ProductPopup({popupDisplay,id,imgURL = "https://images.u
   };
 
   const addToWishlist = async () => {
-      const response = await axios.put(`http://localhost:4000/wishlist/${id}`,null, {
+      const response = await axios.put(`https://leaseposh-server.vercel.app/wishlist/${id}`,null, {
         headers: { Authorization: localStorage.getItem('token')  }
       });
 
@@ -38,7 +38,7 @@ export default function ProductPopup({popupDisplay,id,imgURL = "https://images.u
   }
 
   const addToCart = async () => {
-    const response = await axios.put(`http://localhost:4000/cart/${id}`,null, {
+    const response = await axios.put(`https://leaseposh-server.vercel.app/cart/${id}`,null, {
         headers: { Authorization: localStorage.getItem('token')  }
       });
 

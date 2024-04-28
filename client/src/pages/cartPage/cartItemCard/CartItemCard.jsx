@@ -20,7 +20,7 @@ export default function CartItemCard({ refetch, id, productImg, title, brand = "
       };
 
     const removeFromCart = async () => {
-        const response = await axios.put(`http://localhost:4000/cart/${id}/delete`, null, {
+        const response = await axios.put(`https://leaseposh-server.vercel.app/cart/${id}/delete`, null, {
             headers: { Authorization: localStorage.getItem('token') }
         });
 
@@ -31,7 +31,7 @@ export default function CartItemCard({ refetch, id, productImg, title, brand = "
     }
 
     const addToWishlist = async () => {
-        const response = await axios.put(`http://localhost:4000/wishlist/${id}`,null, {
+        const response = await axios.put(`https://leaseposh-server.vercel.app/wishlist/${id}`,null, {
           headers: { Authorization: localStorage.getItem('token')  }
         });
   

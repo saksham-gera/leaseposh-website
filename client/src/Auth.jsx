@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
       if (!localStorage.getItem('token')) {
         console.log("Please Login First!")
       } else {
-        const response = await axios.get('http://localhost:4000/login', {
+        const response = await axios.get('https://leaseposh-server.vercel.app/login', {
           headers: { Authorization: localStorage.getItem('token') },
         });
         if (response.data) {
