@@ -9,7 +9,7 @@ import WishlistPage from './pages/wishlistPage/WishlistPage.jsx';
 import Trial from './pages/Trial.jsx';
 import CartPage from './pages/cartPage/CartPage.jsx';
 import LoginSignupPopup from './components/loginSignupPopup/LoginSignupPopup.jsx';
-import NavBar from './components/navBar/navBar.jsx';
+import NavBar from './components/navBar/NavBar.jsx';
 
 export default function App() {
   const [PopupDisplay, setPopupDisplay] = useState("none");

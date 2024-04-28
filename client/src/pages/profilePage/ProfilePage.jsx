@@ -1,4 +1,4 @@
-import NavBar from "../../components/navBar/navBar";
+import NavBar from "../../components/navBar/NavBar";
 import "./ProfilePage.css";
 
 import React from 'react'

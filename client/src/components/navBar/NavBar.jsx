@@ -1,6 +1,6 @@
 import NavAccButtons from "./navAccButtons";
 import NavButtons from "./NavButtons";
-import "./navBar.css"
+import "./NavBar.css"
 import { Link } from "react-router-dom";
 
 
