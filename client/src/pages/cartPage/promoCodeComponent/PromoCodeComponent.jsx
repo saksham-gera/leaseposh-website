@@ -1,4 +1,3 @@
-import { Button } from "bootstrap";
 import "./PromoCodeComponent.css";
 
 import React from 'react'

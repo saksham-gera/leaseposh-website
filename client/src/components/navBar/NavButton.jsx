@@ -1,4 +1,4 @@
-import "./navButton.css"
+import "./NavButton.css"
 
 export default function NavButton({buttonName = "Button"}) {
     return (

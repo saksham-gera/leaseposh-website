@@ -2,7 +2,7 @@ import NavButton from "./NavButton";
 import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import SearchIcon from '@mui/icons-material/Search';
-import "./navAccButtons.css";
+import "./NavAccButtons.css";
 import 'reactjs-popup/dist/index.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from "react-router-dom";
