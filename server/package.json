@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index"
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "20.x"
   },
   "keywords": [],
   "author": "",
@@ -23,8 +25,5 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^8.0.0",
     "session": "^0.1.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.2"
   }
 }
