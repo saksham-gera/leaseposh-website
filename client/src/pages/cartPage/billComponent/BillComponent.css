@@ -1,0 +1,33 @@
+.bill-component {
+    margin: 5vh 0;
+    padding: 3vh 0;
+    border-top: 3px dashed rgba(0, 0, 0, 0.5);
+    border-bottom: 3px dashed rgba(0, 0, 0, 0.5);
+}
+
+.price-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.price-details-heading {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+.prices {
+    width: 100%;
+    display: flex;
+    color: rgba(0, 0, 0, 0.6);
+    justify-content: space-between;
+}
+
+.benefit {
+    color: rgb(0, 185, 0);
+}

@@ -1,11 +1,9 @@
 .header {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
-.header-nav {
-    position: absolute;
-    z-index: 10;
-}
+
 .header-bg-overlay {
     display: flex;
     position: absolute;
@@ -13,7 +11,7 @@
     align-items: center;
     opacity: 50%;
     height: 90vh;
-    width: 100vw;
+    width: 100%;
     z-index: 0;
 }
 
@@ -23,16 +21,17 @@
     background-color: transparent;
     align-items: center;
     height: 90vh;
-    width: 100vw;
+    width: 100%;
     z-index: 1;
 }
 
 .header-bg {
     background-image: url("/assets/Banner.webp");
+    background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
     position: static;
     z-index: -1;
-    width: 100vw;
+    width: 100%;
     height: 90vh;
 }

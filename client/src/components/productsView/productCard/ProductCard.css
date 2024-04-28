@@ -12,7 +12,7 @@
 
 .product-card img{
     transition: linear 0.2s;
-    width: 22.9vw;
+    width: 22.9%;
     height: 50vh;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
