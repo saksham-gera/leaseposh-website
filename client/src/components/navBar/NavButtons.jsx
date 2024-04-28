@@ -1,4 +1,4 @@
-import "./navButtons.css"
+import "./NavButtons.css"
 import NavButton from "./NavButton";
 import { Link } from 'react-router-dom';
 
