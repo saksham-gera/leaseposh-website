@@ -1,4 +1,3 @@
-import NavBar from "../../components/navBar/navBar";
 import "./ProductsPage.css";
 import React from 'react'
 import ProductsGrid from "./productsGrid/ProductsGrid";
