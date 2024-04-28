@@ -12,9 +12,6 @@ module.exports.wishlistIt = wrapAsync (async (req, res) => {
     const loggedInUserID = req.user.id;
     let loggedInUser = await User.findById(loggedInUserID);
     let loggedInUserWishlist = await Wishlist.findById(loggedInUser.wishlist);
-    console.log(loggedInUserWishlist);
-    console.log("user id: " +loggedInUserID);
-    console.log("product id:" +id);
     let wishlistUpdated;
     if(loggedInUserWishlist.products.includes(currProduct._id) ) {
         wishlistUpdated  = await Wishlist.findByIdAndUpdate(loggedInUser.wishlist, {$pull: {"products": currProduct._id}});
@@ -26,7 +23,6 @@ module.exports.wishlistIt = wrapAsync (async (req, res) => {
 });
 
 module.exports.allProducts = async (req, res) => {
-    console.log("accessing wishlist");
     const loggedInUserID = req.user.id;
     const loggedInUser = await User.findById(loggedInUserID);
     const loggedInUserWishlist = await Wishlist.findById(loggedInUser.wishlist);

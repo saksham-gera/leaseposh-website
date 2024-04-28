@@ -8,11 +8,11 @@ import { useAuth } from "../../../Auth";
 
 export default function AccDropDown({loginPopupDisplay}) {
     const [username, setUsername] = useState("Sir/Ma'am")
-    const { IsLoggedIn, response, logout } = useAuth();
+    const { IsLoggedIn, Response, logout } = useAuth();
 
     useEffect(() => {
         if (IsLoggedIn) {
-            setUsername(response.data.username);
+            setUsername(Response.data.username);
         }
     })
 

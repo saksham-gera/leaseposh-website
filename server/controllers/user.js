@@ -17,7 +17,6 @@ module.exports.signup = async (req, res) => {
             if (err) {
                 return next(err);
             }
-            console.log("signed up successfully");
             await newCart.save();
             await newWishlist.save();
             let cartWithUserId = await Cart.findByIdAndUpdate(newCart._id, {user_id: newUser._id});
@@ -25,7 +24,7 @@ module.exports.signup = async (req, res) => {
             await cartWithUserId.save();
             await wishlistWithUserId.save();
 
-            const token = jwt.sign({ username: newUser.username, id: newUser._id }, 'mysupersecretcode');
+            const token = jwt.sign({ username: newUser.username, id: newUser._id }, process.env.SECRET_CODE);
             res.json({ token });
         });
     } catch (err) {
@@ -36,13 +35,8 @@ module.exports.signup = async (req, res) => {
 }
 
 module.exports.login = async (req, res) => {
-    // We Are Saving The OriginalURL in Locals Because Passport Resets The property Of session After Authenticating
-    // req.flash("success", "Welcome To JustWander");
-    // let redirectUrl = res.locals.redirectUrl || "/";
-    console.log("logged in successfully");
     const user = req.user;
-    console.log(user);
-    const token = jwt.sign({ username: user.username, id: user._id}, 'mysupersecretcode');
+    const token = jwt.sign({ username: user.username, id: user._id}, process.env.SECRET_CODE);
     res.json({ token });
 }
 

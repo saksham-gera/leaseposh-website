@@ -25,7 +25,6 @@ export default function CartItemCard({ refetch, id, productImg, title, brand = "
         });
 
         if (response.status == "200") {
-            console.log("deleted")
             notifyCart();
             refetch();
         }
