@@ -58,7 +58,7 @@ export default function ProductsGrid({ func, api }) {
                 </div>
             </div>
             <div className="products-grid">
-                {    Products ? 
+                {    (Products != []) ? 
                     Products.map(product =>
                         <ProductCard popupDisplay={func} id={product._id} imageURL={product.image} title={product.title} description={product.description} price={product.price} />
                     ) : <div>Loading...</div>
