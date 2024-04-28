@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import NavBar from "../../components/navBar/navBar.jsx";
 import "./Header.css";
 import HeaderText from "./HeaderText.jsx";
 
