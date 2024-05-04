@@ -27,8 +27,8 @@ export default function ProductsView({ func, category, gender }) {
 
     const fetchProducts = async () => {
         try {
-            
-                let response = await axios.get(url, {
+            let response = await axios.get(url, {
+
                     headers: { Authorization: localStorage.getItem('token') },
                 });
                 if (response.status == "200") {
