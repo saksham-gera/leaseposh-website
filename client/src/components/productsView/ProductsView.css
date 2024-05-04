@@ -1,6 +1,6 @@
 .title-of-view {
-    font-size: 45px;
-    margin: 80px;
+    font-size: 3rem;
+    margin: 5rem;
 }
 
 .products-view-top {
@@ -29,4 +29,20 @@
 .view-all-button:hover {
     color: white;
     background-color: black;
+}
+
+@media screen and (max-width:1224px){
+    .title-of-view {
+        font-size: 1rem;
+        margin: 2rem;
+        margin-bottom: 0;
+    }
+
+    .view-all-button .innerText{
+        font-size: 1rem;
+    }
+
+    .view-all-button {
+        margin-top: 1.5rem;
+    }
 }
