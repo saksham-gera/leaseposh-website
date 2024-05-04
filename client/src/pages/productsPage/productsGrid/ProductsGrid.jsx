@@ -29,7 +29,7 @@ export default function ProductsGrid({ func, api }) {
     
     const fetchProducts = async () => {
         try {
-            if (!localStorage.getItem('token') && (api=="wishlist" || api =="cart")) {
+            if ((api == "wishlist" || api == "cart") && (!localStorage.getItem('token'))) {
                 console.log("Please Login First!")
             } else {
                 let response = await axios.get(url, {
@@ -57,11 +57,11 @@ export default function ProductsGrid({ func, api }) {
                     </div>
                 </div>
             </div>
-            <div className="products-grid">
+            {<div className="products-grid">
                 {Products.map(product =>
-                    <ProductCard popupDisplay={func} id={product._id} imageURL={product.image} title={product.title} description={product.description} price={product.price} />
+                    <ProductCard popupDisplay={func} id={product._id} imageURL={product.image} title={product.title} description={product.description} price={product.price + " Rs."} />
                 )}
-            </div>
+            </div>}
         </div>
     )
 }

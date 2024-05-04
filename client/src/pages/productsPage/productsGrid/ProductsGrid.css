@@ -7,3 +7,37 @@
     overflow-y: scroll;
     padding-top: 1rem;
 }
+
+.products-page-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+    width: 75%;
+}
+
+.grid-header {
+    margin-top: 7rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 1224px){
+    .products-page-cards {
+        width: 100%;
+        margin-left: 0%;
+    }
+
+    .grid-header {
+        justify-content: space-around;
+        margin-bottom: 0;
+    }
+
+    .grid-header .view-all-button {
+        margin-top: 0rem;
+    }
+}

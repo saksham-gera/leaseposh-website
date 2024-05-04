@@ -10,3 +10,18 @@
     font-size: 40px;
     width: 70vh;
 }
+
+@media screen and (max-width: 1224px) {
+    .header-text {
+        margin: 1rem;
+    }
+
+    .header-text p {
+        font-size: medium;
+        width: 80vw;
+    }
+
+    .header-text h5 {
+        font-size: small;
+    }
+}

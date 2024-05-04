@@ -31,3 +31,14 @@
 .navBarChild .spacer {
     width: auto;
 }
+
+@media screen and (max-width: 1224px) {
+    .navBarChild img {
+        display: none;
+    }
+
+    .navBarChild .spacer {
+        display: none;
+    }
+}
+

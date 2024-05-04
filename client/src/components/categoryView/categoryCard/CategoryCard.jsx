@@ -7,7 +7,6 @@ export default function CategoryCard({title,imageURL}) {
                 <img src={imageURL}></img>
             </div>
             <div className="category-card-overlay">{title}</div>
-            {/* <div className="category-card-title"></div> */}
         </div>
     );
 }
