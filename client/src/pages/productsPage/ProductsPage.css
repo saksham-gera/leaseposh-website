@@ -25,22 +25,14 @@
     opacity: 80%;
 }
 
+@media screen and (max-width: 1224px) {
+    .filter-heading {
+        font-size: 0.25rem;
+        display: none;
+    }
 
+    .products-filter {
+        width: 0%;
+    }
 
-.products-page-cards {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: 25%;
-    width: 75%;
-}
-
-.grid-header {
-    margin-top: 7rem;
-    margin-bottom: 2.5rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
