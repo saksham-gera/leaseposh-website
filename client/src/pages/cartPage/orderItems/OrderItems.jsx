@@ -1,13 +1,15 @@
+import { CartContext } from "../../../CartContext";
 import CartItemCard from "../cartItemCard/CartItemCard";
 import "./OrderItems.css";
 import axios from "axios";
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
-export default function OrderItems({amountFetch}) {
+export default function OrderItems() {
   const [Products, setProducts] = useState([]);
   let url = "https://leaseposh-server.vercel.app/cart";
   let srno = 1 ;
   let productPrice = 0;
+  const {setAmount, Discount, setTotal} = useContext(CartContext);
   const fetchProducts = async () => {
     try {
       if (!localStorage.getItem('token')) {
@@ -21,7 +23,8 @@ export default function OrderItems({amountFetch}) {
           for(let i = 0 ; i < Products.length ; i++) {
             productPrice += Products[i].price;
           }
-          amountFetch(productPrice);
+          setAmount(productPrice);
+          setTotal((productPrice * 0.5 - productPrice * Discount + 159).toFixed());
         }
       }
     } catch (error) {
@@ -30,7 +33,7 @@ export default function OrderItems({amountFetch}) {
   }
   useEffect(() => { 
     fetchProducts();
-   }, [])
+   }, [Products])
 
   return (
     <>
@@ -41,7 +44,6 @@ export default function OrderItems({amountFetch}) {
         </div>
       </div>
       <div className="order-items">
-        
         {
           Products.map(product =>
           <CartItemCard

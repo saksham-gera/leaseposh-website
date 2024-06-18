@@ -11,6 +11,7 @@ const express = require("express");
 const session = require("express-session");
 const app = express();
 const cors = require('cors');
+app.use(cors());
 
 //passport
 const User = require("./models/user.js");
@@ -22,10 +23,10 @@ const productRouter = require("./routes/product.js");
 const userRouter = require("./routes/user.js");
 const wishlistRouter = require("./routes/wishlist.js");
 const cartRouter = require("./routes/cart.js");
+const ordersRouter = require("./routes/orders.js");
 
 
 app.use(bodyParser.json());
-app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const MONGO_URI = process.env.MONGO_URL;
@@ -44,6 +45,7 @@ const sessionOptions = {
     }
 }
 
+
 main()
 .then(() => {
     console.log("Connected to mongoose");
@@ -55,7 +57,6 @@ main()
 app.use(session(sessionOptions));
 app.use(flash());
 
-
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -66,6 +67,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use("/cart", cartRouter);
 app.use("/wishlist", wishlistRouter);
 app.use("/product", productRouter);
+app.use("/orders", ordersRouter);
 app.use("/", userRouter);
 
 

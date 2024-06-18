@@ -16,7 +16,6 @@ export default function Home({func}) {
             <ProductsView category="Designer's Collection" func={func}/>
             <ProductsView category="Today's Picks" func={func}/>
             <ProductsView category="Trending These Days" func={func}/>
-            <Footer />
         </div>
     </div>
   )
