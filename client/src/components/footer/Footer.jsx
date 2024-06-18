@@ -2,7 +2,7 @@ import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import "./footer.css";
+import "./Footer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavButton from '../navBar/NavButton';
 import Button from '../Button';
