@@ -1,8 +1,6 @@
 const Cart = require("../models/cart");
 const User = require("../models/user");
 const Product = require("../models/product");
-
-const ExpressError = require("../utils/expressError.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 
 module.exports.addToCart = wrapAsync(async (req, res) => {

@@ -15,7 +15,6 @@ export default function ProductsPage({func}) {
           </div>
           <ProductsGrid func={func}/>
         </div>
-        <Footer />
     </div>
   )
 }
