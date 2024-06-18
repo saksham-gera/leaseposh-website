@@ -2,6 +2,7 @@ import "./SignupComponent.css";
 import axios from 'axios';
 
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function SignupComponent({ func }) {
 
@@ -17,24 +18,33 @@ export default function SignupComponent({ func }) {
     };
 
     const handleSignup = async (e) => {
+        e.preventDefault();
         try {
-            e.preventDefault();
             const response = await axios.post('https://leaseposh-server.vercel.app/signup', formData);
 
             if (response.status == 200) {
                 const { token } = response.data;
-                localStorage.setItem('token', token);
+                if (!token) {
+                    toast.error("There Is An Error Signing Up, Please Check Your Credentials Carefully");
+                    setFormData({ ...formData, password: "" });
+                } else {
+                    localStorage.setItem('token', token);
+                    toast.success("You've Been Signed Up To Leaseposh");
+                    window.location.reload();
+                }
+            } else {
+                toast.error("There Is An Error Signing Up, Please Check Your Credentials Carefully");
             }
-            window.location.reload();
 
         } catch (error) {
-            console.error('login failed', error.response);
+            console.error('Sign Up failed', error.response);
+            toast.error("There Is An Error Signing Up, Please Check Your Credentials Carefully");
         }
     };
 
     return (
-        <div>
-            <h1>Hey! Welcome</h1>
+        <div className="flex flex-col justify-center items-center w-full">
+            <div className="font-bold text-[2rem] text-white">Hey! Welcome</div>
             <form onSubmit={handleSignup} className="needs-validation">
                 <input
                     type="text"

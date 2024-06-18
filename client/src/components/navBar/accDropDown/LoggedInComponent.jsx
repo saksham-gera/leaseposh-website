@@ -1,17 +1,19 @@
 import React from 'react'
 import "./LoggedInComponent.css"
+import { Link } from 'react-router-dom'
 export default function LoggedInComponent({username,logout}) {
   return (
     <div className='logged-in-component'>
             <div className="acc-menu-item">
                 Profile
             </div>
-            <div className="acc-menu-item">
+            <Link to={"/wishlist"} style={{ textDecoration: "none" }}><div className="acc-menu-item">
                 Wishlist
-            </div>
+            </div></Link>
+            <Link to={"/orders"} style={{ textDecoration: "none" }}>
             <div className="acc-menu-item">
                 Orders
-            </div>
+            </div></Link>
             <div className="acc-menu-item">
                 Contact Us
             </div>

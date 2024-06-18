@@ -13,6 +13,7 @@ import AccDropDown from "./accDropDown/AccDropDown";
 
 export default function NavAccButtons({loginPopupDisplay}) {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
+    const [search, setSearch] = useState("");
 
     const handleMouseEnter = () => {
         setDropdownVisible(true);
@@ -21,13 +22,18 @@ export default function NavAccButtons({loginPopupDisplay}) {
     const handleMouseLeave = () => {
         setDropdownVisible(false);
     };
+
+    const Search = () => {
+        setSearch("");
+    }
+
     const [SearchVisibility, setSearchVisibility] = useState(false);
     return (
         <div className="navAccButtonsChild">
             <div className="search-input" style={{ visibility: SearchVisibility ? "visible" : "hidden" }}>
-                <input id="search" className="form-control rounded-20" placeholder="Search"></input>
+                <input id="search" className="form-control rounded-10" placeholder="Search" value={search} onChange={(event) => setSearch(event.target.value)}></input>
             </div>
-            <div className="search-button" onClick={() => { setSearchVisibility(!SearchVisibility) }}>
+            <div className="search-button" onClick={SearchVisibility ? Search : setSearchVisibility }>
                 <NavButton id="search" buttonName={<SearchIcon />} />
             </div>
             <Link to={"/cart"} style={{ textDecoration: "none" }}><NavButton buttonName={<ShoppingCartRoundedIcon />} /></Link>

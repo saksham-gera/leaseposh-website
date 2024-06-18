@@ -15,9 +15,13 @@ const userSchema = new Schema({
     cart: {
         type: Schema.Types.ObjectId,
         ref: 'cart'
+    },
+    orders: {
+        type: Schema.Types.ObjectId,
+        ref: 'orders'
     }
 });
 
 userSchema.plugin(passportLocalMongoose);
-const user = mongoose.model("user", userSchema);
-module.exports = user;
+const User = mongoose.model("User", userSchema);
+module.exports = User;
