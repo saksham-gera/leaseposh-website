@@ -79,7 +79,7 @@ return (
                     ADD TO CART
                   </div>
                 </div>
-                <div className="buy-now"><Link to="/cart" onClick={() => {addToCart();popupDisplay("none","","","","");}} style={{textDecoration:"none", color: "white"}}>BUY NOW</Link></div>
+                <div className="buy-now"><Link to="/cart" onClick={() => {addToCart(); popupDisplay("none","","","","");}} style={{textDecoration:"none", color: "white"}}>BUY NOW</Link></div>
             </div>
           </div>
         </div>

@@ -1,15 +1,17 @@
 import "./CartItemCard.css";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from "axios";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CartContext } from "../../../CartContext";
 
-export default function CartItemCard({ refetch, id, productImg, title, brand = "Siyaram's", price, srno }) {
+export default function CartItemCard({ refetch, id, productImg, title, brand = "Siyaram's", price, srno,}) {
     const [WishlistActionButtonColor, setWishlistActionButtonColor] = useState("black");
     const [DeleteActionButtonColor, setDeleteActionButtonColor] = useState("black");
+    const { Discount } = useContext(CartContext);
 
     const notifyCart = () => {
         toast.error("Product Removed From Cart!")
@@ -45,7 +47,6 @@ export default function CartItemCard({ refetch, id, productImg, title, brand = "
         <div className="cart-item-card">
             <div className="cart-item-card-left">
                 <div className="select-button-sr-no">
-                    <input type="checkbox" className="form-check-input" defaultChecked></input>
                     <div className="sr-no">
                         {srno}
                     </div>
@@ -83,7 +84,7 @@ export default function CartItemCard({ refetch, id, productImg, title, brand = "
                             </div>
                         </div>
                         <div className="item-price">
-                            {price}
+                        <s> Rs. {price}</s> <span className=" text-[#33CC33] text-lg font-bold"> Rs. {(price * (1-0.5-Discount)).toFixed()} </span>
                         </div>
                     </div>
                 </div>

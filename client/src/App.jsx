@@ -10,6 +10,8 @@ import Trial from './pages/Trial.jsx';
 import CartPage from './pages/cartPage/CartPage.jsx';
 import LoginSignupPopup from './components/loginSignupPopup/LoginSignupPopup.jsx';
 import NavBar from './components/navBar/NavBar.jsx';
+import OrdersPage from './pages/ordersPage/OrdersPage.jsx';
+import Footer from './components/footer/Footer.jsx';
 
 export default function App() {
   const [PopupDisplay, setPopupDisplay] = useState("none");
@@ -65,7 +67,10 @@ export default function App() {
         <Route path='/search' element={<ProductsPage func={popupDisplay} />}></Route>
         <Route path='/wishlist' element={<WishlistPage func={popupDisplay} />}></Route>
         <Route path='/cart' element={<CartPage />}></Route>
+        <Route path='/orders' element={<OrdersPage />}></Route>
       </Routes>
+
+      <Footer />
       
     </div>
   )

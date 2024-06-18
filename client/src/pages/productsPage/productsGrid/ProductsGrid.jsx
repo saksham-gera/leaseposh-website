@@ -50,7 +50,7 @@ export default function ProductsGrid({ func, api }) {
         <div className="products-page-cards">
             <div className="grid-header">
                 <div className="no-of-results">{Products.length} Results</div>
-                <h2>{category || gender || api || "Explore Our Best Collection"}</h2>
+                <h2 className="font-semibold text-[2rem]">{category || gender || api || "Explore Our Best Collection"}</h2>
                 <div className="view-all-button">
                     <div className="innerText">
                         Sort By

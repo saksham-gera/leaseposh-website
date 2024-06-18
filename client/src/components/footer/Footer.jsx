@@ -6,8 +6,38 @@ import "./footer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavButton from '../navBar/NavButton';
 import Button from '../Button';
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
+import { useState } from 'react';
+
+
 
 export default function Footer() {
+    const [email, setEmail] = useState("");
+    const handleSubmit = (e) => {
+        e.preventDefault();    
+        emailjs
+          .send(
+            import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+            {
+                from_name: "Leaseposh",
+                from_email: "leaseposh@gmail.com",
+                to_email: email,
+            },
+            import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+          )
+          .then(
+            () => {
+              toast.success("Thank You For Subscribing To Our Newsletter.");
+              setEmail("");
+            },
+            (error) => {
+              console.error(error);
+                toast.error("Ahh, something went wrong. Please try again later.");
+            }
+          );
+      };
     return (
         <div className='footer-sub-footer'>
             <div className="sub-footer">
@@ -15,8 +45,8 @@ export default function Footer() {
                     <h4>Subscribe To Our Newsletter and Be Updated With Our Latest Poshwear</h4>
                 </div>
                 <div className="newsletter-input">
-                    <input className="form-control" placeholder="Write Your Email Here!"></input>
-                    <Button className="subscribe-button" buttonName="Subscribe"/>
+                    <input className="form-control" placeholder="Write Your Email Here!" value={email} onChange={(event) => setEmail(event.target.value)}></input>
+                    <Button className="subscribe-button" buttonName="Subscribe" onClick={handleSubmit}/>
                 </div>
                 
             </div>
