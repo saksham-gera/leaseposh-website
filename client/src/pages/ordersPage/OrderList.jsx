@@ -29,7 +29,7 @@ function OrderList() {
     }, [])
     return (
     <div className='w-full mt-[10vh]'>
-        <div className='font-bold text-lg'>
+        <div className='text-[1.5rem] font-medium'>
             Orders
         </div>
         <div className='rounded-[0.5rem] border-[1px] border-solid border-black my-[3vh] p-4'>

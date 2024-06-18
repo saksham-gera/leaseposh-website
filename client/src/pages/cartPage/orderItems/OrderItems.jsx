@@ -38,7 +38,7 @@ export default function OrderItems() {
   return (
     <>
       <div className="heading-noOfItems">
-        <h2>Cart</h2>
+        <div className="text-[1.5rem] font-medium">Cart</div>
         <div className="no-of-cart-items">
           {Products.length} items
         </div>
