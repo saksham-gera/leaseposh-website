@@ -1,7 +1,7 @@
 import "./LoginComponent.css";
 import axios from 'axios';
 import React, { useState } from 'react';
-
+import { toast } from 'react-toastify';
 export default function LoginComponent({ func }) {
     const [formData, setFormData] = useState({
         username: '',
@@ -21,17 +21,21 @@ export default function LoginComponent({ func }) {
             if (response.status == 200) {
                 const { token } = response.data;
                 localStorage.setItem('token', token);
+                window.location.reload();
+                toast.success("You've Been Logged In");
+            } else {
+                toast.error("There Is An Error Logging In, Please Check Your Credentials Carefully");
             }
-            window.location.reload();
 
         } catch (error) {
             console.error('login failed', error.response);
+            toast.error("There Is An Error Logging In, Please Check Your Credentials Carefully");
         }
     };
 
     return (
-        <div>
-            <h1 >Hey! Welcome Back</h1>
+        <div className="flex flex-col justify-center items-center w-full">
+            <div className="font-bold text-[2rem] text-white">Hey! Welcome Back</div>
             <form onSubmit={handleLogin} className="needs-validation">
                 <input
                     type="text"
