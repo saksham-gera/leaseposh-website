@@ -9,3 +9,9 @@
 .navButtonChild:hover {
     opacity: 100%;
 }
+
+@media screen and (max-width: 1224px) {
+    .navButtonChild {
+        margin: 0.25rem 0.5rem;
+    }
+}

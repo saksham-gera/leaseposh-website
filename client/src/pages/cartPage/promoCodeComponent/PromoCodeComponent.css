@@ -9,3 +9,9 @@
     height: 100%;
     margin-left: 2rem;
 }
+
+@media screen and (max-width: 1224px){
+    .promo-code-component {
+        width: 100%;
+    }
+}

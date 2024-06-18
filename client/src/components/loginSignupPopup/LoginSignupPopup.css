@@ -133,7 +133,7 @@
     color: white;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1224px) {
 
     .login-container {
         height: 50vh;
