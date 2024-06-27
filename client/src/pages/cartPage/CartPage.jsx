@@ -1,5 +1,5 @@
 import "./CartPage.css";
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import OrderItems from "./orderItems/OrderItems";
 import BillComponent from "./billComponent/BillComponent";
 import PromoCodeComponent from "./promoCodeComponent/PromoCodeComponent"
@@ -7,12 +7,21 @@ import { CartContext } from "../../CartContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Auth";
 
-export default function CartPage() {
+export default function CartPage({loginPopupDisplay}) {
   const [Amount, setAmount] = useState(0);
   const [Discount, setDiscount] = useState(0);
   const [Total, setTotal] = useState(0);
   const navigate = useNavigate();
+  const {IsLoggedIn} = useAuth();
+
+  useEffect(() => {
+    if(!IsLoggedIn) {
+        loginPopupDisplay('flex');
+        toast.error("Please Login/Sign Up First!");
+    }
+}, []);
 
   const updateOrderInDatabase = async (payment_id, order_id, signature) => {
     try {

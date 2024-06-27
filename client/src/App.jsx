@@ -21,7 +21,6 @@ export default function App() {
   const [PopupDescription, setPopupDescription] = useState("");
   const [PopupID, setPopupID] = useState("");
   const [LoginSignupDisplay, setLoginSignupDisplay] = useState("none");
-
   const loginPopupFunc = (loginDisplay) => {
     setLoginSignupDisplay(loginDisplay);
   }
@@ -65,9 +64,9 @@ export default function App() {
         <Route path='/trial' element={<Trial />}></Route>
         <Route path='/' element={<Home func={popupDisplay} />}></Route>
         <Route path='/search' element={<ProductsPage func={popupDisplay} />}></Route>
-        <Route path='/wishlist' element={<WishlistPage func={popupDisplay} />}></Route>
-        <Route path='/cart' element={<CartPage />}></Route>
-        <Route path='/orders' element={<OrdersPage />}></Route>
+        <Route path='/wishlist' element={<WishlistPage func={popupDisplay} loginPopupDisplay={loginPopupFunc}/>}></Route>
+        <Route path='/cart' element={<CartPage loginPopupDisplay={loginPopupFunc}/>}></Route>
+        <Route path='/orders' element={<OrdersPage loginPopupDisplay={loginPopupFunc}/>}></Route>
       </Routes>
 
       <Footer />
