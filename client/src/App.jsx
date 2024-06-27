@@ -58,7 +58,7 @@ export default function App() {
         <LoginSignupPopup func={loginPopupFunc} />
       </div>
       <div className="product-popup-visibility" style={{ display: PopupDisplay }}>
-        <ProductPopup id={PopupID} popupDisplay={popupDisplay} description={PopupDescription} title={PopupTitle} imgURL={PopupImageURL} price={PopupPrice} />
+        <ProductPopup id={PopupID} loginPopupDisplay={loginPopupFunc} popupDisplay={popupDisplay} description={PopupDescription} title={PopupTitle} imgURL={PopupImageURL} price={PopupPrice} />
       </div>
 
       <Routes>
