@@ -17,6 +17,7 @@ export default function PromoCodeComponent() {
 
     var promos = new Map();
     promos.set("first", 0.5169);
+    promos.set("trio", 0.50698);
     const findPromo = () => {
         if (promos.has(formData.promo.toLowerCase())) {
             setPromo(true);
